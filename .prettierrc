@@ -1,0 +1,10 @@
+{
+  "printWidth": 80,
+  "singleQuote": true,
+  "arrowParens": "avoid",
+  "trailingComma": "none",
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "editor.formatOnSave": true
+}
