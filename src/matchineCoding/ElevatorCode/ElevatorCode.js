@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Elevator from './matchineCoding/ElevatorCode/Elevator';
-import ControlPanel from './matchineCoding/ElevatorCode/ControlPanel';
-import './App.css';
+import Elevator from './Elevator';
+import ControlPanel from './ControlPanel';
+// import './ElevatorCode.css';
 
 const floors = [6, 5, 4, 3, 2, 1, 0];
 
-function App() {
+function ElevatorCode() {
   const [currentFloor, setCurrentFloor] = useState(0);
   const [targetFloors, setTargetFloors] = useState([]);
 
@@ -37,7 +37,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="ElevatorCode">
       <div className="building">
         {floors.map(floor => (
           <div key={floor} className={`floor current`}>
@@ -51,4 +51,4 @@ function App() {
   );
 }
 
-export default App;
+export default ElevatorCode;

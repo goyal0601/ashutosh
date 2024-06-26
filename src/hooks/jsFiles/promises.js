@@ -226,3 +226,66 @@ const promisesWithP = [
 const resolveWithPriority = promises => new Promise((resolve, reject) => {});
 
 resolveWithPriority(promisesWithP.sort((a, b) => a.priority - b.priority));
+
+// promises run in parallel and then push one by one
+
+const list = [
+  setTimeout(() => {
+    console.log(1);
+  }, 500),
+  setTimeout(() => {
+    console.log(2);
+  }, 500),
+  setTimeout(() => {
+    console.log(3);
+  }, 500),
+  setTimeout(() => {
+    console.log(4);
+  }, 500),
+  setTimeout(() => {
+    console.log(5);
+  }, 500),
+  setTimeout(() => {
+    console.log(6);
+  }, 500),
+  setTimeout(() => {
+    console.log(7);
+  }, 500)
+];
+
+const returnPromiseFunction = (pro, index) =>
+  new Promise((resolve, reject) => {
+    pro();
+    resolve(index);
+  });
+
+const resolveInSeries = (promisesNum, cb) => {
+  const runInParallel = proms => {
+    const promsPromise = proms.map((pro, index) =>
+      returnPromiseFunction(pro, index)
+    );
+    new Promise.any([promsPromise]).then(data => {
+      const nextData = cb();
+      if (nextData) {
+        runInParallel((proms[data] = nextData));
+      } else {
+        const promisesAll = proms
+          .splice(data, 1)
+          .map((pro, index) => returnPromiseFunction(pro, index));
+        Promise.all(promisesAll).then(data => {
+          console.log(data);
+        });
+      }
+    });
+  };
+  runInParallel(promisesNum);
+};
+
+const resolve = (promises, limit) => {
+  const fourPromises = promises.splice(0, limit);
+  resolveInSeries(fourPromises, () => {
+    return promises.shift();
+  });
+};
+
+resolve(list, 4);

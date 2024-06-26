@@ -12,7 +12,7 @@ import UseCopyHook from './UseCopyHook';
 import UseLockedBody from './UseLockedBody';
 
 function App() {
-  const [showTab, setShowTab] = useState('hooks');
+  const [showTab, setShowTab] = useState('matchine');
 
   return (
     <div>
@@ -35,7 +35,7 @@ function App() {
           Use copy hook
           <UseCopyHook />
           Use locked body
-          <UseLockedBody />
+          {/* <UseLockedBody /> */}
         </>
       )}
       {showTab === 'matchine' && <MatchineCoding />}
