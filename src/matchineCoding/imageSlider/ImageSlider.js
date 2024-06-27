@@ -39,21 +39,25 @@ const ImageSlider = () => {
       <div
         style={{
           display: 'flex',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          position: 'relative'
           //   alignItems: 'center'
         }}
       >
         <div
           style={{
+            position: 'absolute',
+            left: 0,
             display: 'flex',
             justifyContent: 'center',
             width: '40px',
-            zIndex: '10',
+
             cursor: 'pointer',
             alignItems: 'center',
-            opacity: '25%',
+            opacity: '.25',
             backgroundColor: 'black',
-            color: 'red'
+            color: 'red',
+            height: '100%'
           }}
           onClick={() => selectPrevImage(selectedImageIndex - 1)}
         >
@@ -71,9 +75,7 @@ const ImageSlider = () => {
         <img
           style={{
             width: '100%',
-            height: '400px',
-            margin: '0 -40px',
-            transition: 'translateX(-50%)'
+            height: '400px'
           }}
           src={selectedImage.url}
           alt={selectedImage.caption}
@@ -82,14 +84,17 @@ const ImageSlider = () => {
           onClick={() => selectNextImage(selectedImageIndex + 1)}
           style={{
             display: 'flex',
+            position: 'absolute',
+            right: 0,
             justifyContent: 'center',
             width: '40px',
-            zIndex: '10',
+
             cursor: 'pointer',
             backgroundColor: 'black',
-            opacity: '25%',
+            opacity: '.25',
             alignItems: 'center',
-            color: 'red'
+            color: 'red',
+            height: '100%'
           }}
         >
           <div

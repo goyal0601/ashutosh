@@ -17,7 +17,7 @@ const Progress = ({ progress }) => {
     backgroundColor: progress > 66 ? 'green' : progress > 33 ? 'orange' : 'red',
     borderRadius: 'inherit',
     textAlign: 'center',
-    transition: 'width 1s ease-in-out'
+    transition: 'width 1s'
   };
 
   const labelStyles = {
